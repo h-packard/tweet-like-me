@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>{{title}}</title>
+    <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/style.css') }}">
+  </head>
+  <body>
+    <div class="login">
+      <a href="login">Log in!</a>
+    </div>
+    <div class="logout">
+      <a href="/logout">Log out!</a>
+    </div>
+    <div class="home">
+      <a href="/">Home</a>
+    </div>
+    <div class="tweets">
+      <a href="/">All Your Tweets</a>
+    </div>
+
+
+      <h1>Tweet Like Me</h1>
+
+      <h3>Make a new Tweet <a href="newpost">here</a>.</h3>
+
+
+    {% with messages = get_flashed_messages(with_categories=True) %}
+      <ul>
+        {% for category,message in messages %}
+            <li class = {{category}}>{{message}}</li>
+        {% endfor %}
+      </ul>
+    {% endwith %}
+
+      {% block content %}
+
+    {% endblock %}
+
+  </body>
+</html>
